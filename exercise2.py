@@ -19,6 +19,11 @@ class Point2D:
         self._coordinates += other
         return self
 
+    def __isub__(self, other: Vector) -> "Point2D":
+        # Add other Vector to the coordinates of this point (in-place)
+        self._coordinates -= other
+        return self
+
 def test_point_construction() -> None:
     point = Point2D(1.0, 42.0)
     assert point.x == 1.0
