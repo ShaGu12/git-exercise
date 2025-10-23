@@ -7,8 +7,11 @@ from math import isclose
 
 class Vector:
     def __init__(self, coordinates: List[float]) -> None:
-        # self._coordinates = coordinates.copy()
-        self._coordinates = coordinates # Task A
+        # self._coordinates = coordinates : The constructor stores the original list reference: self._coordinates = coordinates.
+        # If client code later changes that list, the internal state of Vector changes too (aliasing).
+        # To prevent this, we must copy the list in the constructor so the vector owns its data.
+        # self._coordinates = coordinates.copy() : Make an internal copy so outside changes do not affect inside.
+        self._coordinates = coordinates.copy() # Task A
 
     def __getitem__(self, i: int) -> float:
         return self._coordinates[i]
